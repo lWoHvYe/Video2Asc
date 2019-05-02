@@ -65,7 +65,7 @@ public class Video2Asc {
                     }
                     result.append("\n");
                 }
-                System.out.println("033c");
+                System.out.println("\033c");
                 System.out.println(result);
             }
 

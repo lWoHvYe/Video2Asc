@@ -56,16 +56,21 @@ public class Video2Asc {
                 System.out.println("\033c");
 
                 StringBuilder result = new StringBuilder();
+//                将灰度化的图片与给出的Asc字符对应
                 for (int i = 0; i < img_mat.rows(); i += 7) {
                     for (int j = 0; j < img_mat.cols(); j += 7) {
+//                        获取指定格的灰度
                         int gray = (int) img_mat.get(i, j)[0];
+//                        根据灰度，配置对应的字符的索引
                         int index = Math.round(gray * (ascii.length() + 1) / 255);
+//                        对于灰度过高的统一用指定字符表示
                         result.append(index >= ascii.length() ? "." : (ascii.charAt(index)));
                     }
+//                    一行结束，换行
                     result.append("\n");
                 }
-
-                System.out.println("033c");
+//                  一帧结束，
+                System.out.println("\033c");
 //                向控制台输出字符，可根据需要更改输出方式
                 System.out.println(result);
             }
